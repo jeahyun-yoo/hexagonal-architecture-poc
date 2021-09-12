@@ -1,0 +1,22 @@
+<div id="search-component">
+  <label for="search-box">Hero Search</label>
+  <nz-input-group [nzSuffix]="suffixIconSearch">
+    <input #searchBox id="search-box"
+           type="text"
+           nz-input
+           placeholder="input search text"
+           (input)="search(searchBox.value)" />
+  </nz-input-group>
+  <ng-template #suffixIconSearch>
+    <i nz-icon nzType="search"></i>
+  </ng-template>
+
+  <ul class="search-result">
+    <li *ngFor="let hero of heroes$ | async" >
+      <a routerLink="/detail/{{hero.id}}">
+        <i nz-icon nzType="user"></i>
+        {{hero.name}}
+      </a>
+    </li>
+  </ul>
+</div>
